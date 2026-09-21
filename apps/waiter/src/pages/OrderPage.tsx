@@ -16,7 +16,7 @@ import { getErrorMessage } from '../api/client'
 import type { MenuItem } from '../types'
 
 const formatCurrency = (n: number) =>
-  new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(n)
+  new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2 }).format(n)
 
 const OrderPage: React.FC = () => {
   const navigate = useNavigate()
