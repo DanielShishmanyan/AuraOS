@@ -18,7 +18,7 @@ import { formatDistanceToNow } from 'date-fns'
 import type { Order, OrderStatus } from '../types'
 
 const formatCurrency = (n: number) =>
-  new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(n)
+  new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2 }).format(n)
 
 const STATUS_COLOR: Record<OrderStatus, string> = {
   CREATED:   'bg-gray-100 text-gray-700',
@@ -105,7 +105,7 @@ const PaymentSheet: React.FC<PaymentSheetProps> = ({ order, onClose, onPaid }) =
         <div>
           <label className="text-xs font-medium text-gray-500 mb-1 block">Amount collected</label>
           <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-medium">₹</span>
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-medium">€</span>
             <input
               type="number"
               step="0.01"
