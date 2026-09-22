@@ -28,7 +28,7 @@ export const authRateLimiter = rateLimit({
     },
   },
   // Skip rate limiting in test environment
-  skip: () => process.env.NODE_ENV === 'test',
+  skip: () => process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development',
 });
 
 /**
@@ -48,7 +48,7 @@ export const publicOrderRateLimiter = rateLimit({
       message: 'Too many orders. Please wait a few minutes.',
     },
   },
-  skip: () => process.env.NODE_ENV === 'test',
+  skip: () => process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development',
 });
 
 /**
@@ -68,7 +68,7 @@ export const otpRequestRateLimiter = rateLimit({
       message: 'Too many code requests. Please wait a few minutes.',
     },
   },
-  skip: () => process.env.NODE_ENV === 'test',
+  skip: () => process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development',
 });
 
 /**
@@ -88,5 +88,5 @@ export const globalRateLimiter = rateLimit({
       message: 'Too many requests. Please slow down.',
     },
   },
-  skip: () => process.env.NODE_ENV === 'test',
+  skip: () => process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development',
 });

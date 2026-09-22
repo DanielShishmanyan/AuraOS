@@ -1,5 +1,7 @@
 -- 006_seed.sql - Load demo data for development and testing
 
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
 -- Insert demo restaurant
 INSERT INTO restaurants (id, name, slug, auto_approve_online_orders, delay_threshold_minutes)
 VALUES ('11111111-1111-1111-1111-111111111111'::UUID, 'Demo Kitchen', 'demo-kitchen', FALSE, 15)
@@ -11,7 +13,7 @@ VALUES (
     '22222222-2222-2222-2222-222222222222'::UUID,
     '11111111-1111-1111-1111-111111111111'::UUID,
     'admin@demo-kitchen.local',
-    '$2a$10$d9plWLBZ2YUG.9.4wpJ8Feoc/hmCek5D8bX7xyWeSmkw2hhIXJR0e',
+    crypt('demo123', gen_salt('bf', 10)),
     'Admin User',
     'ADMIN',
     TRUE
@@ -23,7 +25,7 @@ INSERT INTO users (restaurant_id, email, password_hash, name, role, is_active)
 VALUES (
     '11111111-1111-1111-1111-111111111111'::UUID,
     'waiter@demo-kitchen.local',
-    '$2a$10$d9plWLBZ2YUG.9.4wpJ8Feoc/hmCek5D8bX7xyWeSmkw2hhIXJR0e',
+    crypt('demo123', gen_salt('bf', 10)),
     'Waiter User',
     'WAITER',
     TRUE
@@ -35,7 +37,7 @@ INSERT INTO users (restaurant_id, email, password_hash, name, role, is_active)
 VALUES (
     '11111111-1111-1111-1111-111111111111'::UUID,
     'kitchen@demo-kitchen.local',
-    '$2a$10$d9plWLBZ2YUG.9.4wpJ8Feoc/hmCek5D8bX7xyWeSmkw2hhIXJR0e',
+    crypt('demo123', gen_salt('bf', 10)),
     'Kitchen User',
     'KITCHEN',
     TRUE
@@ -46,7 +48,7 @@ INSERT INTO users (restaurant_id, email, password_hash, name, role, is_active)
 VALUES (
     '11111111-1111-1111-1111-111111111111'::UUID,
     'reception@demo-kitchen.local',
-    '$2a$10$d9plWLBZ2YUG.9.4wpJ8Feoc/hmCek5D8bX7xyWeSmkw2hhIXJR0e',
+    crypt('demo123', gen_salt('bf', 10)),
     'Reception User',
     'RECEPTION',
     TRUE

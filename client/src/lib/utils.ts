@@ -1,11 +1,11 @@
 import { format, formatDistanceToNow, isToday, isYesterday } from 'date-fns'
 
-/** Format currency in INR */
+/** Format currency in EUR */
 export function formatCurrency(amount: number): string {
-  return new Intl.NumberFormat('en-IN', {
+  return new Intl.NumberFormat('en-IE', {
     style: 'currency',
-    currency: 'INR',
-    minimumFractionDigits: 0,
+    currency: 'EUR',
+    minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(amount)
 }
